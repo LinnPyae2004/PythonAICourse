@@ -1,0 +1,19 @@
+# Python - Ignore compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments - Ignore the heavy library folders
+venv/
+env/
+ENV/
+.env
+
+# VS Code - Ignore editor settings
+.vscode/
+
+# Windows - Ignore system thumbnails
+Thumbs.db
+ehthumbs.db
+Desktop.ini

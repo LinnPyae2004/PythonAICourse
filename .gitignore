@@ -17,3 +17,11 @@ ENV/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# YOLO/PyTorch weights
+*.pt
+*.pth
+
+# YOLO training runs/logs
+runs/
+datasets/

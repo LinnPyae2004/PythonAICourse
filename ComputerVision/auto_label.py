@@ -56,18 +56,16 @@ for filename in files:
     if image is None:
         continue
 
-    # flip for the mirrored images
-    image = cv2.flip(image, 1)
-
     # Detection
     results = hands.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 
     if results.multi_hand_landmarks:
-        hand_label = results.multi_handedness[0].classification[0].label 
-    
+        hand_label = results.multi_handedness[0].classification[0].label   
+
         if hand_label != HAND_LABEL:
-            print(f"Skipped: {filename} (Detected a wrong side hand!!)")
-            continue
+            print(f"Mirroring {filename} to fix orientation...")
+            image = cv2.flip(image, 1)
+            results = hands.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
 
         # Standardized naming (always starts from 001)
         new_base_name = f"{PREFIX}_{count:03d}"

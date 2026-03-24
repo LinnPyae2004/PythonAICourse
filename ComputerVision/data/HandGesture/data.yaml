@@ -5,6 +5,7 @@ val: valid/images         # Path to validation images
 test: test/images         # Path to test images
 
 # Classes
-nc: 1                     # Number of classes 
+nc: 2                     # Number of classes 
 names:
-  0: right_closed_palm
+  0: closed_palm
+  1: open_palm

@@ -9,6 +9,8 @@ venv/
 env/
 ENV/
 .env
+*_env/
+.cache
 
 # VS Code - Ignore editor settings
 .vscode/

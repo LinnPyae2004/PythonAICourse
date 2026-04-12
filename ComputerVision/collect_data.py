@@ -2,7 +2,7 @@ import cv2
 import os
 import time
 
-OUTPUT_FOLDER = "Open_Palm" # change the name as you need 
+OUTPUT_FOLDER = "Pray" # change the name as you need 
 OUTPUT_DIR = f"data/HandGesture/raw_staging/{OUTPUT_FOLDER}"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 FRAME_INTERNAL = 10
@@ -31,7 +31,7 @@ while True:
     count += 1
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
-        break 
+        break
 
 cap.release()
 cv2.destroyAllWindows()

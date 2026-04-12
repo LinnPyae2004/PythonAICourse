@@ -12,6 +12,10 @@ ENV/
 *_env/
 .cache
 
+# ignore images data
+*.jpg
+*.png
+
 # VS Code - Ignore editor settings
 .vscode/
 

@@ -19,5 +19,8 @@ def train_my_model():
         workers=2
     )
 
+    print("Training complete. Converting to ONNX for C++")
+    model.export(format='onnx', opset=12)
+
 if __name__ == '__main__':
     train_my_model()

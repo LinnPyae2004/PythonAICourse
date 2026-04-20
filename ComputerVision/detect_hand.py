@@ -5,7 +5,7 @@ from ultralytics import YOLO
 # load the trained model
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-path = os.path.join(current_dir, 'data', 'HandGesture', 'runs', 'detect', 'hand_gesture_v15', 'weights', 'best.pt')
+path = os.path.join(current_dir, 'data', 'HandGesture', 'runs', 'detect', 'hand_gesture_v1', 'weights', 'best.pt')
 
 model = YOLO(path)
 cap = cv2.VideoCapture(0)

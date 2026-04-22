@@ -31,3 +31,9 @@ Desktop.ini
 # YOLO training runs/logs
 runs/
 datasets/
+
+*.aux
+*.bbl
+*.blg
+*.log
+*.synctex.gz

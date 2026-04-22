@@ -1,0 +1,689 @@
+\documentclass{report}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage[most]{tcolorbox}
+
+% --- Language and Font Support ---
+\usepackage{fontspec}
+
+% Myanmar line and character breaks
+\XeTeXlinebreaklocale "my"
+\XeTeXlinebreakskip = 0pt plus 2.5pt
+
+% English Font (Standard Windows Name)
+\setmainfont{Times New Roman}
+
+% Burmese Font (Standard Windows Name)
+\newfontfamily\burmesefont{Myanmar Text}[Script=Myanmar]
+
+% TEXTBOOK STYLE DEFINITIONS
+\definecolor{logicGray}{RGB}{245, 245, 245}
+
+\newtcolorbox{logicbox}{
+    colback=logicGray,
+    colframe=gray!50!black,
+    arc=5pt,
+    boxrule=1pt,
+    enhanced,
+    left=15pt,
+    fontupper=\small\sffamily,
+    title={Logic Flow}
+}
+
+%  VS CODE STYLE DEFINITIONS
+\definecolor{vscodeBg}{RGB}{30,30,30}
+\definecolor{vscodeFont}{RGB}{220,220,220}
+\definecolor{vscodeKeyword}{RGB}{86,156,214}
+\definecolor{vscodeString}{RGB}{206,145,120}
+\definecolor{vscodeComment}{RGB}{106,153,85}
+
+\lstdefinestyle{vscodeStyle}{
+    language=Python,
+    basicstyle=\ttfamily\color{vscodeFont},
+    keywordstyle=\color{vscodeKeyword}\bfseries,
+    stringstyle=\color{vscodeString},
+    commentstyle=\color{vscodeComment},
+    showstringspaces=false,
+    breaklines=true,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    tabsize=4,
+    literate={\\}{{\textbackslash}}1
+}
+
+\newtcolorbox{vscode}[1]{
+    colback=vscodeBg,
+    colframe=black,
+    title={\small\color{white} \textbullet \ \textbullet \ \textbullet \ \ \ #1},
+    fonttitle=\bfseries,
+    coltitle=white,
+    after title={\par},
+    arc=3pt,
+    boxrule=0.5pt,
+    enhanced,
+    breakable,
+    colupper=vscodeFont,
+    before upper={\color{vscodeFont}},
+    after={\color{black}\par},
+    pad at break=2pt,
+    toptitle=2pt,
+    bottomtitle=2pt
+}
+
+% OUTPUT TERMINAL DEFINITIONS
+\definecolor{terminalBg}{RGB}{5,5,5}
+\definecolor{terminalFont}{RGB}{0,255,0}
+
+% Create the Terminal window look
+\newtcolorbox{terminal}{
+    colback=terminalBg,
+    colframe=gray!40!black,
+    title={\small\color{white} \textbf{Terminal}},
+    fonttitle=\bfseries,
+    coltitle=white,
+    arc=0pt,
+    boxrule=1pt,
+    enhanced,
+    breakable,
+    left=5pt,
+    right=5pt,
+    top=5pt,
+    bottom=5pt
+}
+
+\title{AI Navigators}
+\author{Authors : Linn Pyae \\\ Assistant : Khaing Zin Oo}
+\date{April 2026}
+
+\begin{document}
+
+\maketitle
+
+\chapter{Python Basics}
+\section{Introduction to Python (\burmesefont Python အကြောင်း မိတ်ဆက်)}
+\subsection{What is Python? (\burmesefont Python ဆိုတာ ဘာလဲ?)}
+
+Python is a popular, high-level programming language widely used across various fields of software development. Although Python is primarily known as an interpreted language, modern Python implementations utilize a compilation step into bytecode to enhance performance and support its extensive libraries. As a high-level language, Python's syntax is designed to be highly readable and closely resembles the human language. \\\\
+\indent {\burmesefont Python ဆိုသည်မှာ ဆော့ဖ်ဝဲလ်တည်ဆောက်မှု (software development) နယ်ပယ်အသီးသီးတွင် ကျယ်ပြန့်စွာ အသုံးပြုနေသော လူကြိုက်များသည့် high-level programming language တစ်ခု ဖြစ်သည်။ Python ကို အဓိကအားဖြင့် သရုပ်ပြဘာသာစကား (interpreted language)  တစ်ခုအဖြစ် အသိများသော်လည်း ခေတ်မီ Python စနစ်များသည် လုပ်ဆောင်ချက် ပိုမိုမြန်ဆန်စေရန်နှင့် ၎င်း၏ ကြီးမားလှသော libraries များကို ပံ့ပိုးပေးနိုင်ရန်အတွက် bytecode အဖြစ် ပြောင်းလဲပေးသော အဆင့်အဖြစ်လည်း အသုံးပြုကြသည်။ High-level language တစ်ခုဖြစ်သည်နှင့်အညီ Python ၏ ရေးထုံး/ စကားလုံးဝါကျ အထားအသို (syntax) သည် လူသားတို့ ပြောဆိုသော ဘာသာစကားနှင့် အနီးစပ်ဆုံး ဆင်တူပြီး ဖတ်ရလွယ်ကူစေရန် ဒီဇိုင်းထုတ်ထားသည်။}
+\begin{itemize}
+    \item \textbf{Web Development:} Powering the backend of robust websites and scalable applications. ({\burmesefont ကောင်းမွန်ခိုင်ခံ့သော ဝဘ်ဆိုဒ်များနှင့် Scalable Applications များ၏ နောက်ကွယ်မှ စနစ်များကို မောင်းနှင်ပေးခြင်း။})
+    \item \textbf{Discord Chat Bots:} Utilizing specialized libraries for seamless communication and automation. ({\burmesefont အလိုအလျောက် ဆက်သွယ်ဆောင်ရွက်ပေးနိုင်သော စနစ်များအတွက် အထူးပြုလုပ်ထားသည့် libraries များကို အသုံးပြုခြင်း။
+})
+    \item \textbf{Mathematics:} Performing complex scientific calculations and data analysis. ({\burmesefont ရှုပ်ထွေး သိပ္ပံဆိုင်ရာ တွက်ချက်မှုများ(scientific calculations) နှင့် အချက်အလက်များကို ခွဲခြမ်းစိတ်ဖြာခင်း (Data Analysis )။})
+    \item \textbf{Machine Learning \& AI:} Serving as the industry standard for developing intelligent systems. ({\burmesefont ဉာဏ်ရည်တုစနစ်များ တည်ဆောက်ရာတွင် စံ ဘာသာစကားအဖြစ် အသုံးပြုခြင်း။})
+\end{itemize}
+
+\subsection{Difference between compiled and interpreted languages (\burmesefont  Compiled နှင့် Interpreted Language များ၏ ကွာခြားချက်)}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Feature} & \textbf{Compiled Languages} & \textbf{Interpreted Languages} \\
+\hline
+Translation (\burmesefont ဘာသာပြန်ဆိုခြင်း) & The entire source code is translated at once before execution. (\burmesefont ကုဒ်တစ်ခုလုံးကို အသုံးမပြုမီ တစ်ခာတည်း ဘာသာပြန်ဆိုသည်။) & Code is translated and executed line-by-line during runtime. (\burmesefont ကုဒ်ကို လုပ်ဆောင်နေစဉ်အတွင်း တစ်ကြောင်းချင်းစီ ဘာသာပြန်ပြီး အလုပ်လုပ်စေသည်။)\\
+\hline
+Output (\burmesefont ရလဒ်) & Creates a standalone executable file (e.g., .exe). (\burmesefont သီးခြားအသုံးပြုနိုင်သော ဖိုင်တစ်ခု (ဥပမာ- .exe ဖိုင်) ကို ထုတ်ပေးသည်။) & No separate executable; requires an interpreter program to run.(\burmesefont သီးခြားဖိုင် မထုတ်ပေးဘဲ ကုဒ်ကို အလုပ်လုပ်စေရန် အတွက် interpreter ပရိုဂရမ်တစ်ခု လိုအပ်သည်။) \\
+\hline
+Performance (\burmesefont စွမ်းဆောင်ရည်) & Generally faster; the CPU executes native machine code directly. (\burmesefont ယေဘံုယျအားဖြင့် ပိုမိုမြန်ဆန်လေ့ရှိသည်။ CPU သည် machine code ကို တိုက်ရိုက် အလုပ်လုပ် (run) စေနိုင်သည်။) & Generally slower; the interpreter adds overhead during execution. (\burmesefont ယေဘုံယျအားဖြင် ပိုနှေးသည်။ Interpreter သည် ကုဒ်ကို အလုပ်လုပ်စေရန် အဆင့်ဆင့် လုပ်ဆောင်ရသောကြောင့် ဖြစ်သည်။)\\
+\hline
+Portability (\burmesefont သယ်ဆောင်ရလွယ်ကူမှု/ပေါ့ပါးဝန်ကျဥ်းမှု) & Platform-specific; must be recompiled for different operating systems.(\burmesefont အသုံးပြုမည့် စနစ်ပေါ်တွင် မူတည်သည်။ မတူညီသော operating systemများအတွက် ထပ်မံ ဘာသာပြန် (re-compile) ရန် လိုအပ်သည်။) & Highly portable; the same code runs on any system with a compatible interpreter. (\burmesefont မည်သည့်စနစ်တွင်မဆို လွယ်ကူစွာ အသုံးပြုနိုင်သည်။ တူညီသော ကုဒ်ကို တွဲဖက်သံုးနိုင်သော (compatible) interpreter ရှိသည့် မည်သည့်စနစ်တွင်မဆို အသုံးပြုနိုင်သည်။)\\
+\hline
+Debugging (\burmesefont ကွန်ပျူတာပရိုဂရမ်မှ အပြစ်ကို ရှာဖွေဖယ်ရှားခြင်)& Errors are caught during the "build" phase before the program runs.(\burmesefont ပရိုဂရမ် မစတင်မီ build phase (တည်ဆောက်သည့်အဆင့်) တွင် error (အမှား) များကို ရှာဖွေတွေ့ရှိနိုင်သည်။) & Errors are discovered at runtime when the specific line is executed. (\burmesefont ပရိုဂရမ် အလုပ်လုပ်နေစဉ်အတွင်း သက်ဆိုင်ရာကုဒ်လိုင်းသို့ ရောက်ရှိမှသာ အမှားများကို တွေ့ရှိရသည်။)\\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Python Syntax compared to other programming languages ({\burmesefont Python ၏ ရေးထုံးနှင့် အခြားသော Programming language များအား နှိုင်းယှဉ်ချက် })}
+
+Python was designed for readability, and has some similarities to the English language with influence from mathematics. Python uses new lines to complete a command, as opposed to other programming languages which often use semicolons or parentheses. Python relies on indentation, using whitespace, to define scope; such as the scope of loops, functions and classes. Other programming languages often use curly-brackets for this purpose.
+\\\\
+\indent {\burmesefont Python ကို ဖတ်ရလွယ်ကူစေရန် ရည်ရွယ်ပြီး ဒီဇိုင်းထုတ်ထားသည်။ ၎င်းတွင် အင်္ဂလိပ်ဘာသာစကားနှင့် ဆင်တူသော လက္ခဏာရှိပြီး သင်္ချာဘာသာရပ်နှ၏ လွှမ်းမိုးမှုများ ပါဝင်နေသည်။ အမိန့်တစ်ခု (command) ပြီးဆုံးကြောင်း ပြသရန် စာလုံးများ (semicolons သို့မဟုတ် parentheses) ကို အသုံးပြုသော အခြား programming language များနှင့် မတူဘဲ Python ကမူ စာကြောင်းအသစ် (new lines) ကိုသာ အသုံးပြုသည်။ Python သည် အမိန့်တစ်ခုချင်းစီ၏ နယ်ပယ်အတိုင်းအတာ (scope) ကို သတ်မှတ်ရန် indentation (စာကြောင်းအစတွင် ချန်ထားသော နေရာလွတ်) ကို အသုံးပြုသည်။ ၎င်းသည် loops၊ functions နှင့် classes များ၏ နယ်ပယ်ကို ခွဲခြားရန် အသုံးပြုခြင်း ဖြစ်သည်။ အခြားသော Programming language များတွင်မူ အဆိုပာ ရည်ရွယ်ချက်အတွက် တွန့်ကွင်း (curly-brackets) များကို အသုံးပြုလေ့ရှိကြသည်။
+}
+
+\subsection*{Quiz}
+\begin{itemize}
+    \item \textbf{If you are a native speaker of a language and you are interacting with that language, are you an interpreter or a compiler? Why?} ({\burmesefont အကယ်၍ သင်သည် မိခင်ဘာသာစကားတစ်ခုကို ကျွမ်းကျင်စွာ ပြောဆိုနိုင်သူဖြစ်ပြီး ထိုဘာသာစကားဖြင့်ပင် တစ်ဦးနှင့်တစ်ဦး အပြန်အလှန် ပြောဆိုဆက်သွယ်နေသည်ဆိုပါက၊ သင့်ကိုယ်သင် interpreter တစ်ယောက်ဟု ယူဆမည်လား သို့မဟုတ် compiler တစ်ယောက်ဟု ယူဆမည်လား? ဘာကြောင့်လဲ?})
+    
+\end{itemize}
+
+\subsection*{Homework}
+\begin{itemize}
+    \item \textbf{If you listen to a math lecture in total silence and later return home to write notes based on your understanding, would you consider yourself an interpreter or a compiler? Why?} ({\burmesefont အကယ်၍ သင်သည် သင်္ချာဘာသာရပ် သင်ကြားမှုကို အသံတိတ် အာရုံစိုက်နားထောင်ပြီးနောက်၊ အိမ်ပြန်ရောက်မှ သင်နားလည်သလို မှတ်စုများ ပြန်လည်ရေးသားမည်ဆိုပါက၊ သင့်ကိုယ်သင် interpreter တစ်ယောက်ဟု သတ်မှတ်မည်လား သို့မဟုတ် compiler တစ်ယောက်ဟု ယူဆမည်လား? ဘာကြောင့်လဲ?
+})
+\end{itemize}
+
+\section{Basic Syntax \& Variables ({\burmesefont အခြေခံ ရေးထုံးများနှင့် ကိန်းရှင်များ})}
+\subsection{Executing Python Syntax ({\burmesefont Python ရေးထုံးများကို execute လုပ်ခြင်း})}
+After installing the interpreter, Python syntax can be executed by writing directly in the Command Line as shown below:
+\\\\
+\indent {\burmesefont Interpreter ကို ထည့်သွင်း(install)ပြီးနောက်၊ Python ရေးထုံးများကို အောက်တွင် ဖော်ပြထားသည့်အတိုင်း Command Line တွင် တိုက်ရိုက်ရေးသားပြီး စမ်းသပ်ကြည့်နိုင်ပါသည်။
+}
+
+\begin{terminal}
+\texttt{\color{terminalFont} >>> print("Hello, World!") }\\
+\texttt{\color{terminalFont} Hello, World! }\\
+\end{terminal}
+
+\subsection{Statements}
+Since programming involves giving a computer program a list of \textbf{instructions} to \textbf{execute}, we refer to these instructions as \textbf{statements}. Normally, the interpreter or compiler runs the code line by line, as shown below:
+\\\\
+\indent {\burmesefont Programming ရေးသားခြင်းဆိုသည်မှာ ကွန်ပျူတာ ပရိုဂရမ်တစ်ခုကို လုပ်ဆောင်ရမန်ညွှန်ကြားချက်များ (instructions) ပေးခြင်းဖြစ်ပြီး၊ ထိုညွှန်ကြားချက်များကို statements ဟု ခေါ်ဆိုသည်။ ပုံမှန်အားဖြင့် interpreter သို့မဟုတ် compiler သည် ကုဒ်များကို အောက်ပါအတိုင်း တစ်ကြောင်းချင်းစီ ဖတ်ပြီး လုပ်ဆောင်သည်။}
+
+\begin{vscode}{main.py}
+\begin{lstlisting}[style=vscodeStyle]
+print("Hello, World!")
+print("Have a good day.")
+print("Learning Python is fun!")
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > Hello, World!}\\
+\texttt{\color{terminalFont} > Have a good day.}\\
+\texttt{\color{terminalFont} > Learning Python is fun!}\\
+\end{terminal}
+
+\subsection{Variables}
+Just like in mathematics, we can store data using a short name (such as $x$ or $y$) or a more descriptive name (such as \texttt{age}, \texttt{car\_name}, or \texttt{total\_volume}). We can later use these variables in various places by referring to the variable name to access the data stored inside.
+\\\\
+\indent {\burmesefont သင်္ချာဘာသာရပ်ကဲ့သို့ Python တွင်လည်း ကိန်းဂဏန်း အချက်အလက်များကို $x$, $y$ အစရှိသည်ဖြင့် ကိုယ်စားပြု အမည်တို များဖြင့် ဖြစ်စေ ၊အချက်အလက်များကို \texttt{age}၊ \texttt{car\_name} သို့မဟုတ် \texttt{total\_volume} စသည့် ပိုမိုရှင်းလင်းသော အမည်များဖြင့် သိမ်းဆည်းထားနိုင်ပါသည်။ နောင်တွင် ထိုသိမ်းဆည်းထားသော အချက်အလက်များကို ပြန်လည်အသုံးပြုလိုပါက ၎င်းတို့အား ပေးထားသော အမည် (Variable name) ကို ခေါ်ယူရုံဖြင့် အလွယ်တကူ အသုံးပြုနိုင်ပါသည်။}
+
+
+\begin{vscode}{main.py}
+\begin{lstlisting}[style=vscodeStyle]
+myName = "Linn"
+myAge = 22
+print(myName)
+print(myAge)
+print(f"My name is {myName} and I am {myAge} years old.")
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > Linn}\\
+\texttt{\color{terminalFont} > 22}\\
+\texttt{\color{terminalFont} > My name is Linn and I am 22 years old.}\\
+\end{terminal}
+
+\subsection{Line Continuation}
+Python generally expects one statement per line. However, for better readability, you can use the \textbf{line continuation operator} (\texttt{\textbackslash}) to split a single logical line into multiple physical lines.
+\\\\ 
+\indent {\burmesefont Python သည် ပုံမှန်အားဖြင့် instruction တစ်ခုကို တစ်ကြောင်းတည်းတွင်သာ ရေးသားရန် မျှော်လင့်ပါသည်။ သို့သော်လည်း ကုဒ်များကို ပိုမိုဖတ်ရလွယ်ကူစေရန်အတွက် line continuation operator (\textbackslash) ကို အသုံးပြု၍ logical line တစ်ကြောင်းတည်းကို physical lines အများအပြားအဖြစ် ခွဲခြားရေးသားနိုင်ပါသည်။}
+
+\begin{vscode}{main.py}
+\begin{lstlisting}[style=vscodeStyle]
+myName = "Linn"
+myAge = 22
+print(f"My name is {myName} and " \
+    f"I am {myAge} years old.")
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > My name is Linn and I am 22 years old.}\\
+\end{terminal}
+
+\section{Data Types}
+In programming, the data type is a fundamental concept. Depending on the data type stored in a variable, it can perform different operations. Python includes the following built-in data types by default:
+\\\\
+\indent {\burmesefont Programming တွင် အချက်အလက် အမျိုးအစား (data type) ဆိုသည်မှာ အခြေခံကျသော အယူအဆတစ်ခု ဖြစ်သည်။ ကိန်းရှင် (variable) တစ်ခုအတွင်း သိမ်းဆည်းထားသော အချက်အလက် အမျိုးအစားပေါ် မူတည်ပြီး မတူညီသော လုပ်ဆောင်ချက် (operations) များအား စွမ်းဆောင်နိုင်သည်။ Python တွင် အခြေခံအားဖြင့် အောက်ပါ အချက်အလက် အမျိုးအစားများ ပါဝင်သည်။}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Built-in Data Types}]
+\begin{itemize}
+    \item \textbf{Text Type:} \texttt{str}
+    \item \textbf{Numeric Types:} \texttt{int, float, complex}
+    \item \textbf{Sequence Types:} \texttt{list, tuple, range}
+    \item \textbf{Set Types:} \texttt{set, frozenset}
+    \item \textbf{Mapping Type:} \texttt{dict}
+    \item \textbf{Boolean Type:} \texttt{bool}
+    \item \textbf{Binary Types:} \texttt{bytes, bytearray, memoryview}
+    \item \textbf{None Type:} \texttt{NoneType}
+\end{itemize}
+\end{tcolorbox}
+
+\begin{vscode}{main.py}
+\begin{lstlisting}[style=vscodeStyle]
+myName = "Linn" # str
+myAge = 22 # int
+randomNumber = 67.67 # float
+mylist = ["apple", "banana", "cherry"] # list
+mySet = {"apple", "banana", "cherry"} # set
+myExistence = True # bool
+
+mydict = {
+  "apple": 2,
+  "banana": 10,
+  "cherry": 7
+} # dict
+
+myBinaryData = b"Hello" # bytes
+myGirlfriend = None # NoneType
+\end{lstlisting}
+\end{vscode}
+
+\subsection*{Quiz}
+\begin{itemize}
+    \item \textbf{Imagine you are a lecturer and you want to memorize your students' names (including duplicates). What data type would you use, and why? ({\burmesefont သင်သည် ကထိကတစ်ယောက်ဖြစ်ပြီး သင့်ကျောင်းသားများ၏ အမည်များကို (နာမည်တူများအပါအဝင်) မှတ်မိစေရန် လုပ်ဆောင်မည်ဆိုလျှင် မည်သည့် data type ကို အသုံးပြုမည်နည်း? ဘာကြောင့်လဲ?}) }
+    \item \textbf{Regarding the previous scenario, if you also wanted to memorize the students' ages alongside their names, which data type would you use, and why? ({\burmesefont အထက်ပါအခြေအနေတွင်ပအမည်များနှင့်အတူ ကျောင်းသားများ၏ အသက်ကိုပါ တွဲဖက်မှတ်သားလိုပါက မည်သည့် data type ကို အသုံးပြုမည်နည်း? ဘာကြောင့်လဲ?
+})}
+\end{itemize}
+
+\subsection*{Homework}
+\begin{itemize}
+    \item \textbf{In what scenario would you use the \texttt{None} type, and why? {\burmesefont မည်သည့်အခြေအနေမျိုးတွင် None type ကို အသုံးပြုမည်နည်း? ဘာကြောင့်လဲ?
+}} 
+\end{itemize}
+
+\section{Operators}
+\subsection{Arithmetic Operators}
+Arithmetic operators are used with numeric values to perform common mathematical operations.
+\\\\
+\indent {\burmesefont ကိန်းဂဏန်းတန်ဖိုးများဖြင့် အခြေခံသင်္ချာတွက်ချက်မှုများ ပြုလုပ်ရန်အတွက် Arithmetic operators များကို အသုံးပြုပါသည်။
+}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Operator} & \textbf{Name} & \textbf{Example} \\ \hline
+\texttt{+} & Addition & \texttt{x + y} \\ \hline
+\texttt{-} & Subtraction & \texttt{x - y} \\ \hline
+\texttt{*} & Multiplication & \texttt{x * y} \\ \hline
+\texttt{/} & Division & \texttt{x / y} \\ \hline
+\texttt{\%} & Modulus & \texttt{x \% y} \\ \hline
+\texttt{**} & Exponentiation & \texttt{x ** y} \\ \hline
+\texttt{//} & Floor Division & \texttt{x // y} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{vscode}{arithmetic.py}
+\begin{lstlisting}[style=vscodeStyle]
+x = 10
+y = 3
+
+print(f"Addition: {x + y}")
+print(f"Subtraction: {x - y}")
+print(f"Multiplication: {x * y}")
+print(f"Division: {(x / y):.2f}")
+print(f"Modulus: {x % y}")
+print(f"Exponentiation: {x ** y}")
+print(f"Floor Division: {x // y}") 
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > Addition: 13}\\
+\texttt{\color{terminalFont} > Subtraction: 7}\\
+\texttt{\color{terminalFont} > Multiplication: 30}\\
+\texttt{\color{terminalFont} > Division: 3.33}\\
+\texttt{\color{terminalFont} > Modulus: 1}\\
+\texttt{\color{terminalFont} > Exponentiation: 1000}\\
+\texttt{\color{terminalFont} > Floor Division: 3}\\
+\end{terminal}
+
+\subsection{Logical Operators}
+Logical operators are used to combine conditional statements. They result in either \texttt{True} or \texttt{False}.
+\\\\ 
+\indent {\burmesefont Logical operators များကို အခြေအနေတစ်ခုထက်ပိုသော အဆိုပြုချက် (conditional statements) များကို ပေါင်းစပ်ရန် အသုံးပြုပါသည်။ ၎င်းတို့၏ ရလဒ်သည် True သို့မဟုတ် False ဟူ၍သာ ထွက်ပေါ်မည်ဖြစ်သည်။}
+
+\begin{itemize}
+    \item \textbf{and}: Returns \texttt{True} if both statements are true.
+    \item \textbf{or}: Returns \texttt{True} if at least one statement is true.
+    \item \textbf{not}: Reverse the result (Returns \texttt{False} if the result is true).
+\end{itemize}
+
+\begin{vscode}{logic.py}
+\begin{lstlisting}[style=vscodeStyle]
+a = 10
+b = 5
+
+# Using 'and'
+print(a > 0 and b > 0) 
+
+# Using 'or'
+print(a > 10 or b == 5) 
+
+# Using 'not'
+print(not(a == 10)) 
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > True}\\
+\texttt{\color{terminalFont} > True}\\
+\texttt{\color{terminalFont} > False}\\
+\end{terminal}
+
+\subsection*{Quiz}
+What will be the output of the following?
+\\\\
+\indent {\burmesefont အောက်ပါကုဒ်၏ ရလဒ် (output) မှာ အဘယ်နည်း။}
+\begin{vscode}{quiz.py}
+\begin{lstlisting}[style=vscodeStyle]
+print(0.1 + 0.2 == 0.3)
+\end{lstlisting}
+\end{vscode}
+
+\section{If Statements and Conditional Logic}
+\subsection{What is Conditional Logic?}
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Conditional Logic using Comparison Operators}]
+In programming, we use comparison operators to evaluate the relationship between two values. The result of these operations is always a \texttt{bool} (\texttt{True} or \texttt{False}). In Python, we use the following comparison operators:
+
+{\burmesefont Programming တွင် တန်ဖိုးနှစ်ခုကြားရှိ ဆက်နွှယ်မှုကို စစ်ဆေးရန်အတွက် နှိုင်းယှဉ်ခြင်းအော်ပရေတာများ (comparison operators) ကို အသုံးပြုပါသည်။ ထိုသို့စစ်ဆေးခြင်း၏ ရလဒ်သည် အမြဲတမ်း \texttt{bool} (\texttt{True} သို့မဟုတ် \texttt{False}) သာ ထွက်ပေါ်မည်ဖြစ်သည်။ Python တွင် အောက်ပါ နှိုင်းယှဉ်ခြင်းအော်ပရေတာများကို အသုံးပြုပါသည် -}
+
+\begin{itemize}
+    \item \textbf{Equals:} \texttt{a == b}
+    \item \textbf{Not Equals:} \texttt{a != b}
+    \item \textbf{Less than:} \texttt{a < b}
+    \item \textbf{Less than or equal to:} \texttt{a <= b}
+    \item \textbf{Greater than:} \texttt{a > b}
+    \item \textbf{Greater than or equal to:} \texttt{a >= b}
+\end{itemize}
+\end{tcolorbox}
+
+\begin{center}
+    \begin{minipage}{0.9\textwidth}
+        \small \textit{Note: In most programming languages like C and C++, these conditions being satisfied mean 1 while 0 means not being satisfied, but in Python, \texttt{True} and \texttt{False} are formal objects of the \texttt{bool} type. Furthermore, Python uses the concept of ``Truthiness,'' where empty containers and the number \texttt{0} evaluate to \texttt{False}.}
+        \\\\
+        {\burmesefont မှတ်ချက်။ ။ C နှင့် C++ ကဲ့သို့သော ပရိုဂရမ်မင်းဘာသာစကားအများစုတွင် အခြေအနေတစ်ခုမှန်ကန်ပါက ၁ (1) ဟု သတ်မှတ်ပြီး မှားယွင်းပါက ၀ (0) ဟု သတ်မှတ်လေ့ရှိသည်။ သို့သော် Python တွင်မူ \texttt{True} နှင့် \texttt{False} တို့သည် \texttt{bool} အမျိုးအစားဝင် တရားဝင် Object များဖြစ်ကြသည်။ ထို့အပြင် Python တွင် ``Truthiness'' ဟူသော အယူအဆကို အသုံးပြုထားပြီး၊ အထဲတွင် ဘာမှမရှိသော ကွန်တိန်နာ (empty containers) များနှင့် ကိန်းဂဏန်း \texttt{0} တို့ကို \texttt{False} အဖြစ် သတ်မှတ်တွက်ချက်ပါသည်။}
+    \end{minipage}
+\end{center}
+
+\subsection{If Statement}
+The if statement evaluates a condition (an expression that results in \texttt{True} or \texttt{False}). If the condition is true, the code block inside the if statement is executed. If the condition is false, the code block is skipped. The syntax for a conditional statement in Python uses a colon (\texttt{:}) and indentation.
+
+Before we look at the Python syntax, let's look at the underlying logic. You can read an \texttt{if} statement like a sentence as below:
+\\\\
+\indent {\burmesefont if statement သည် ပေးထားသော အခြေအနေ (condition) တစ်ခု မှန်၊ မမှန် (True သို့မဟုတ် False) ကို စစ်ဆေးတွက်ချက်ပါသည်။ အကယ်၍ အခြေအနေ မှန်ကန်ပါက if statement အတွင်းရှိ ကုဒ်များကို လုပ်ဆောင်မည်ဖြစ်ပြီး၊ အခြေအနေ မှားယွင်းနေပါက ထိုကုဒ်များကို လုပ်ဆောင်ခြင်းမရှိဘဲ ကျော်သွားမည်ဖြစ်သည်။ Python တွင် conditional statement များအတွက် ရေးသားပုံစနစ် (syntax) မှာ ကော်လံ (\texttt{:}) နှင့် အကွာအဝေး (indentation) တို့ကို အသုံးပြုရပါသည်။}
+
+\indent {\burmesefont Python syntax ကို မလေ့လာမီ၊ ၎င်း၏ အရင်းခံ လုပ်ဆောင်ပုံယုတ္တိ (logic) ကို အရင်ကြည့်ကြပါစို့။ \texttt{if} statement တစ်ခုကို အောက်ပါအတိုင်း ဝါကျတစ်ကြောင်းကဲ့သို့ ဖတ်ရှုနိုင်ပါသည် -}
+
+\begin{logicbox}
+    \textbf{IF} (some condition is true) \textbf{THEN} \\
+    \hspace*{2em} Execute this specific block of code. \\
+    \textbf{ELSE} \\
+    \hspace*{2em} Execute this alternative block of code instead.
+\end{logicbox}
+
+In Python, the \textbf{Condition} is usually a comparison (like \texttt{x > 5}), and the \textbf{Then} part is indicated by an indented block.
+
+\indent {\burmesefont Python တွင် \textbf{Condition} (အခြေအနေ) ဆိုသည်မှာ များသောအားဖြင့် နှိုင်းယှဉ်ချက်တစ်ခု (ဥပမာ- \texttt{x > 5}) ဖြစ်ပြီး၊ \textbf{Then} (ထို့နောက်) အပိုင်းကိုမူ ရှေ့သို့အကွာအဝေး (indentation) ခြားထားသော code block တစ်ခုဖြင့် ဖော်ပြလေ့ရှိပါသည်။}
+
+\subsubsection*{Equal If Statement}
+\begin{vscode}{equal.py}
+\begin{lstlisting}[style=vscodeStyle]
+x = 5
+y = 5
+
+if x == y:
+    print("x equals y")
+else:
+    print("x doesn't equal y")
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > x equals y }\\
+\end{terminal}
+
+\subsubsection*{Not Equal If Statement}
+\begin{vscode}{notequal.py}
+\begin{lstlisting}[style=vscodeStyle]
+x = 10
+y = 5
+
+if x != y:
+    print("x doesn't equal y")
+else:
+    print("x equals y")
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > x doesn't equal y }\\
+\end{terminal}
+
+\subsection{Elif Statement}
+The \texttt{elif} keyword is short for ``else if.'' In Python, it is a way of saying: ``if the previous conditions were not true, then try this specific condition instead.''
+
+Before we look at the Python syntax, let's look at the underlying logic. You can read an \texttt{elif} statement like a flow of decisions:
+
+\indent {\burmesefont \texttt{elif} ဟူသော စကားလုံးမှာ ``else if'' ကို အတိုချောက် ရေးထားခြင်း ဖြစ်ပါသည်။ Python တွင် ၎င်းသည် ``အကယ်၍ အရင်အခြေအနေများမှာ မမှန်ကန်ခဲ့လျှင်၊ ယခုဖော်ပြပါ အခြေအနေကို ထပ်မံစမ်းသပ်ကြည့်ပါ'' ဟု ဆိုလိုခြင်း ဖြစ်ပါသည်။}
+
+\indent {\burmesefont Python syntax ကို မလေ့လာမီ၊ ၎င်း၏ အရင်းခံ လုပ်ဆောင်ပုံယုတ္တိ (logic) ကို အရင်ကြည့်ကြပါစို့။ \texttt{elif} statement တစ်ခုကို ဆုံးဖြတ်ချက်များ ချမှတ်ရာတွင် အောက်ပါအတိုင်း စီးဆင်းမှု (flow) တစ်ခုကဲ့သို့ ဖတ်ရှုနိုင်ပါသည် -}
+
+\begin{logicbox}
+    \textbf{IF} (Condition A is true) \textbf{THEN} \\
+    \hspace*{2em} Execute Code Block A. \\
+    \textbf{ELSE IF} (Condition B is true) \textbf{THEN} \\
+    \hspace*{2em} Execute Code Block B. \\
+    \textbf{ELSE} (None of the above are true) \textbf{THEN} \\
+    \hspace*{2em} Execute the Final Fallback Code.
+\end{logicbox}
+
+\subsubsection*{Example Usage of Elif Statement}
+\begin{vscode}{elif.py}
+\begin{lstlisting}[style=vscodeStyle]
+x = 10
+y = 5
+
+if x == y:
+    print("x equals y")
+elif x < y:
+    print("x is less than y")
+else:
+    print("x is greater than y")
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > x is greater than y }\\
+\end{terminal}
+
+\subsection*{Quiz}
+Find the output results of the following problems.
+\subsubsection*{Problem 1}
+\begin{vscode}{problem01.py}
+\begin{lstlisting}[style=vscodeStyle]
+x = 10
+y = 5
+z = 0
+
+if y > z and x == y:
+    print("Statement 1 is true")
+elif x > y and x > z:
+    print("Statement 2 is true")
+else:
+    print("None of the statement was true")
+\end{lstlisting}
+\end{vscode}
+
+\subsubsection*{Problem 2}
+\begin{vscode}{problem02.py}
+\begin{lstlisting}[style=vscodeStyle]
+x = 10
+y = 5
+z = 0
+
+if y > z or x == y:
+    print("Statement 1 is true")
+elif x > y or x > z:
+    print("Statement 2 is true")
+else:
+    print("None of the statement was true")
+\end{lstlisting}
+\end{vscode}
+
+\subsubsection*{Problem 3}
+\begin{vscode}{problem03.py}
+\begin{lstlisting}[style=vscodeStyle]
+x = 10
+y = 5
+z = 0
+
+if y > z and x == y:
+    print("Statement 1 is true")
+elif x < y or z > x:
+    print("Statement 2 is true")
+else:
+    print("None of the statement was true")
+\end{lstlisting}
+\end{vscode}
+
+\section{Functions}
+\subsection{What is a function?}
+A function is a block of code that \textbf{only} runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result and helps to reduce code repetition by making the logic reusable.
+
+\indent {\burmesefont Function ဆိုသည်မှာ ၎င်းအား ခေါ်ယူအသုံးပြုသည့်အခါမှသာ အလုပ်လုပ်သော ကုဒ်အစုအဝေး (block of code) တစ်ခု ဖြစ်ပါသည်။ Function တစ်ခုအတွင်းသို့ parameters ဟု ခေါ်ဆိုသည့် အချက်အလက်များကို ပေးပို့နိုင်ပါသည်။ Function တစ်ခုသည် ရလဒ်တစ်ခုကို ပြန်လည်ပေးပို့နိုင်သလို (return)၊ လုပ်ဆောင်ချက်များကို တစ်ခါတည်း ရေးသားထားနိုင်ခြင်းကြောင့် ကုဒ်များကို ထပ်ခါတလဲလဲ ရေးသားရခြင်းမှ လျှော့ချပေးပြီး ပြန်လည်အသုံးပြုနိုင်သော ယုတ္တိစနစ် (reusable logic) တစ်ခုဖြစ်အောင် ကူညီပေးပါသည်။}
+
+\begin{vscode}{main.py}
+\begin{lstlisting}[style=vscodeStyle]
+def my_function():
+    print("Hello from a function")
+
+# Calling the function
+my_function()
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > Hello from a function }\\
+\end{terminal}
+
+\subsection{Parameters vs. Arguments}
+
+\subsubsection*{Parameters}
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Definition of Parameter}]
+The variable used as a \textbf{placeholder} within the function definition is called a parameter. These are defined during function creation, and you can include as many parameters as needed.
+
+\indent {\burmesefont Function တစ်ခုကို စတင်တည်ဆောက်စဉ် (function definition) သတ်မှတ်လိုက်သော ကိန်းရှင် (variable) ကို parameter ဟု ခေါ်ဆိုပါသည်။ ၎င်းသည် တန်ဖိုးတစ်ခုအတွက် နေရာယူပေးထားသော placeholder တစ်ခုဖြစ်ပြီး၊ မိမိလိုအပ်သလောက် parameter အရေအတွက်ကို ထည့်သွင်းသတ်မှတ်နိုင်ပါသည်။}
+\end{tcolorbox}
+
+\subsubsection*{Arguments}
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Definition of Argument}]
+The \textbf{actual value} passed to the function when it is invoked is called an argument. You must ensure the number of arguments matches the number of parameters defined in the function to avoid a \texttt{TypeError}.
+
+\indent {\burmesefont Function တစ်ခုအား ခေါ်ယူအသုံးပြုသည့်အခါတွင် အမှန်တကယ် ထည့်သွင်းပေးလိုက်သော တန်ဖိုးကို argument ဟု ခေါ်ဆိုပါသည်။ \texttt{TypeError} မဖြစ်ပေါ်စေရန်အတွက် ထည့်သွင်းလိုက်သော argument အရေအတွက်သည် function တည်ဆောက်စဉ်က သတ်မှတ်ခဲ့သော parameter အရေအတွက်နှင့် ကိုက်ညီမှုရှိစေရန် သေချာစွာ ဂရုပြုရမည်ဖြစ်သည်။}
+\end{tcolorbox}
+
+\begin{vscode}{main.py}
+\begin{lstlisting}[style=vscodeStyle]
+# x and y are parameters
+def sum_values(x: int, y: int):
+    print(f"The sum of {x} and {y} is {x + y}")
+
+# 6 and 7 are separate arguments
+sum_values(6, 7)
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > The sum of 6 and 7 is 13 }\\
+\end{terminal}
+
+\subsection{Return Statement}
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Definition of Return}]
+The \texttt{return} statement is a vital programming concept that allows a function to communicate data back to the rest of the program. It exits the function and sends a specific value to the caller. Once a \texttt{return} statement is executed, the function immediately stops, and any subsequent code within that function is ignored.
+
+\indent {\burmesefont \texttt{return} statement ဆိုသည်မှာ function တစ်ခုမှ အချက်အလက်များကို ပရိုဂရမ်၏ အခြားအစိတ်အပိုင်းများထံ ပြန်လည်ပေးပို့နိုင်ရန် လုပ်ဆောင်ပေးသော အရေးကြီးသည့် programming အယူအဆတစ်ခု ဖြစ်ပါသည်။ ၎င်းသည် function အတွင်းမှ ထွက်ခွာပြီး သတ်မှတ်ထားသော တန်ဖိုးတစ်ခုကို ခေါ်ယူသူ (caller) ထံသို့ ပေးပို့လိုက်ပါသည်။ \texttt{return} statement တစ်ခုကို လုပ်ဆောင်ပြီးသည်နှင့် ထို function သည် ချက်ချင်းရပ်တန့်သွားမည်ဖြစ်ပြီး၊ function အတွင်းရှိ နောက်ဆက်တွဲ ကုဒ်များကို လုပ်ဆောင်ခြင်းမရှိဘဲ ကျော်သွားမည်ဖြစ်သည်။}
+\end{tcolorbox}
+
+\begin{vscode}{main.py}
+\begin{lstlisting}[style=vscodeStyle]
+# x and y are parameters
+def sum_values(x: int, y: int):
+    return x + y  # Sends the result back to the caller
+
+first_val = 6
+second_val = 7
+
+# The function call is replaced by its returned value
+total = sum_values(first_val, second_val)
+
+print(f"The sum of {first_val} and {second_val} is {total}")
+\end{lstlisting}
+\end{vscode}
+
+\begin{terminal}
+\texttt{\color{terminalFont} > The sum of 6 and 7 is 13 }\\
+\end{terminal}
+
+\subsection*{Quiz}
+Find the output results  of the following problem.
+\begin{vscode}{quiz.py}
+\begin{lstlisting}[style=vscodeStyle]
+def sum_values(x: int, y: int):
+    return x + y
+
+def diff_values(x: int, y: int):
+    return x - y
+
+def error():
+    print("The conditions were not satisfied.")
+    
+first_val = 10
+second_val = 5
+result = None
+
+if first_val > second_val:
+    result = diff_values(first_val, second_val)
+    print(f"The difference is {result}.")
+elif first_val < second_val:
+    result = sum_values(first_val, second_val)
+    print(f"The sum is {result}.")
+else:
+    error()
+\end{lstlisting}
+\end{vscode}
+
+\subsection*{Homework}
+Find the output results  of the following problem.
+\begin{vscode}{homework.py}
+\begin{lstlisting}[style=vscodeStyle]
+first_val = 12
+second_val = 5
+func_return = None
+result = None
+
+def first_func(x :int, y: int):
+    func_return = modulus(x, y)
+    return 0 if func_return == 0 else second_func(x, y)
+
+def second_func(x: int, y: int):
+    func_return = x / y
+    return func_return
+
+def modulus(x: int, y: int):
+    return x % y
+
+def error():
+    return "The conditions were not satisfied."
+
+def main():
+    result = first_func(first_val, second_val) \
+            if first_val > second_val else error()
+    print(f"The output: {result}")
+    
+main()
+\end{lstlisting}
+\end{vscode}
+
+\renewcommand{\bibname}{References}
+\begin{thebibliography}{9}
+\addcontentsline{toc}{chapter}{References}
+
+\bibitem{w3schools}
+W3Schools. \textit{Python Reference}. 
+Retrieved from https://www.w3schools.com/python
+
+\end{thebibliography}
+
+\end{document}

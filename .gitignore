@@ -32,8 +32,11 @@ Desktop.ini
 runs/
 datasets/
 
+# latex configs
 *.aux
 *.bbl
 *.blg
 *.log
 *.synctex.gz
+*.idea
+*.vs

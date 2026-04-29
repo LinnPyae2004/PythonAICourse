@@ -120,44 +120,44 @@ Python is a popular, high-level programming language widely used across various 
     \item \textbf{Machine Learning \& AI:} Serving as the industry standard for developing intelligent systems. ({\burmesefont ဉာဏ်ရည်တုစနစ်များ တည်ဆောက်ရာတွင် စံ ဘာသာစကားအဖြစ် အသုံးပြုခြင်း။})
 \end{itemize}
 
-\subsection{Difference between compiled and interpreted languages (\burmesefont  Compiled နှင့် Interpreted Language များ၏ ကွာခြားချက်)}
-\begin{center}
-\renewcommand{\arraystretch}{1.5}
-\begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
-\hline
-\textbf{Feature} & \textbf{Compiled Languages} & \textbf{Interpreted Languages} \\
-\hline
-Translation (\burmesefont ဘာသာပြန်ဆိုခြင်း) & The entire source code is translated at once before execution. (\burmesefont ကုဒ်တစ်ခုလုံးကို အသုံးမပြုမီ တစ်ခာတည်း ဘာသာပြန်ဆိုသည်။) & Code is translated and executed line-by-line during runtime. (\burmesefont ကုဒ်ကို လုပ်ဆောင်နေစဉ်အတွင်း တစ်ကြောင်းချင်းစီ ဘာသာပြန်ပြီး အလုပ်လုပ်စေသည်။)\\
-\hline
-Output (\burmesefont ရလဒ်) & Creates a standalone executable file (e.g., .exe). (\burmesefont သီးခြားအသုံးပြုနိုင်သော ဖိုင်တစ်ခု (ဥပမာ- .exe ဖိုင်) ကို ထုတ်ပေးသည်။) & No separate executable; requires an interpreter program to run.(\burmesefont သီးခြားဖိုင် မထုတ်ပေးဘဲ ကုဒ်ကို အလုပ်လုပ်စေရန် အတွက် interpreter ပရိုဂရမ်တစ်ခု လိုအပ်သည်။) \\
-\hline
-Performance (\burmesefont စွမ်းဆောင်ရည်) & Generally faster; the CPU executes native machine code directly. (\burmesefont ယေဘံုယျအားဖြင့် ပိုမိုမြန်ဆန်လေ့ရှိသည်။ CPU သည် machine code ကို တိုက်ရိုက် အလုပ်လုပ် (run) စေနိုင်သည်။) & Generally slower; the interpreter adds overhead during execution. (\burmesefont ယေဘုံယျအားဖြင် ပိုနှေးသည်။ Interpreter သည် ကုဒ်ကို အလုပ်လုပ်စေရန် အဆင့်ဆင့် လုပ်ဆောင်ရသောကြောင့် ဖြစ်သည်။)\\
-\hline
-Portability (\burmesefont သယ်ဆောင်ရလွယ်ကူမှု/ပေါ့ပါးဝန်ကျဥ်းမှု) & Platform-specific; must be recompiled for different operating systems.(\burmesefont အသုံးပြုမည့် စနစ်ပေါ်တွင် မူတည်သည်။ မတူညီသော operating systemများအတွက် ထပ်မံ ဘာသာပြန် (re-compile) ရန် လိုအပ်သည်။) & Highly portable; the same code runs on any system with a compatible interpreter. (\burmesefont မည်သည့်စနစ်တွင်မဆို လွယ်ကူစွာ အသုံးပြုနိုင်သည်။ တူညီသော ကုဒ်ကို တွဲဖက်သံုးနိုင်သော (compatible) interpreter ရှိသည့် မည်သည့်စနစ်တွင်မဆို အသုံးပြုနိုင်သည်။)\\
-\hline
-Debugging (\burmesefont ကွန်ပျူတာပရိုဂရမ်မှ အပြစ်ကို ရှာဖွေဖယ်ရှားခြင်)& Errors are caught during the "build" phase before the program runs.(\burmesefont ပရိုဂရမ် မစတင်မီ build phase (တည်ဆောက်သည့်အဆင့်) တွင် error (အမှား) များကို ရှာဖွေတွေ့ရှိနိုင်သည်။) & Errors are discovered at runtime when the specific line is executed. (\burmesefont ပရိုဂရမ် အလုပ်လုပ်နေစဉ်အတွင်း သက်ဆိုင်ရာကုဒ်လိုင်းသို့ ရောက်ရှိမှသာ အမှားများကို တွေ့ရှိရသည်။)\\
-\hline
-\end{tabular}
-\end{center}
+% \subsection{Difference between compiled and interpreted languages (\burmesefont  Compiled နှင့် Interpreted Language များ၏ ကွာခြားချက်)}
+% \begin{center}
+% \renewcommand{\arraystretch}{1.5}
+% \begin{tabular}{|p{3cm}|p{5cm}|p{5cm}|}
+% \hline
+% \textbf{Feature} & \textbf{Compiled Languages} & \textbf{Interpreted Languages} \\
+% \hline
+% Translation (\burmesefont ဘာသာပြန်ဆိုခြင်း) & The entire source code is translated at once before execution. (\burmesefont ကုဒ်တစ်ခုလုံးကို အသုံးမပြုမီ တစ်ခာတည်း ဘာသာပြန်ဆိုသည်။) & Code is translated and executed line-by-line during runtime. (\burmesefont ကုဒ်ကို လုပ်ဆောင်နေစဉ်အတွင်း တစ်ကြောင်းချင်းစီ ဘာသာပြန်ပြီး အလုပ်လုပ်စေသည်။)\\
+% \hline
+% Output (\burmesefont ရလဒ်) & Creates a standalone executable file (e.g., .exe). (\burmesefont သီးခြားအသုံးပြုနိုင်သော ဖိုင်တစ်ခု (ဥပမာ- .exe ဖိုင်) ကို ထုတ်ပေးသည်။) & No separate executable; requires an interpreter program to run.(\burmesefont သီးခြားဖိုင် မထုတ်ပေးဘဲ ကုဒ်ကို အလုပ်လုပ်စေရန် အတွက် interpreter ပရိုဂရမ်တစ်ခု လိုအပ်သည်။) \\
+% \hline
+% Performance (\burmesefont စွမ်းဆောင်ရည်) & Generally faster; the CPU executes native machine code directly. (\burmesefont ယေဘံုယျအားဖြင့် ပိုမိုမြန်ဆန်လေ့ရှိသည်။ CPU သည် machine code ကို တိုက်ရိုက် အလုပ်လုပ် (run) စေနိုင်သည်။) & Generally slower; the interpreter adds overhead during execution. (\burmesefont ယေဘုံယျအားဖြင် ပိုနှေးသည်။ Interpreter သည် ကုဒ်ကို အလုပ်လုပ်စေရန် အဆင့်ဆင့် လုပ်ဆောင်ရသောကြောင့် ဖြစ်သည်။)\\
+% \hline
+% Portability (\burmesefont သယ်ဆောင်ရလွယ်ကူမှု/ပေါ့ပါးဝန်ကျဥ်းမှု) & Platform-specific; must be recompiled for different operating systems.(\burmesefont အသုံးပြုမည့် စနစ်ပေါ်တွင် မူတည်သည်။ မတူညီသော operating systemများအတွက် ထပ်မံ ဘာသာပြန် (re-compile) ရန် လိုအပ်သည်။) & Highly portable; the same code runs on any system with a compatible interpreter. (\burmesefont မည်သည့်စနစ်တွင်မဆို လွယ်ကူစွာ အသုံးပြုနိုင်သည်။ တူညီသော ကုဒ်ကို တွဲဖက်သံုးနိုင်သော (compatible) interpreter ရှိသည့် မည်သည့်စနစ်တွင်မဆို အသုံးပြုနိုင်သည်။)\\
+% \hline
+% Debugging (\burmesefont ကွန်ပျူတာပရိုဂရမ်မှ အပြစ်ကို ရှာဖွေဖယ်ရှားခြင်)& Errors are caught during the "build" phase before the program runs.(\burmesefont ပရိုဂရမ် မစတင်မီ build phase (တည်ဆောက်သည့်အဆင့်) တွင် error (အမှား) များကို ရှာဖွေတွေ့ရှိနိုင်သည်။) & Errors are discovered at runtime when the specific line is executed. (\burmesefont ပရိုဂရမ် အလုပ်လုပ်နေစဉ်အတွင်း သက်ဆိုင်ရာကုဒ်လိုင်းသို့ ရောက်ရှိမှသာ အမှားများကို တွေ့ရှိရသည်။)\\
+% \hline
+% \end{tabular}
+% \end{center}
 
-\subsection{Python Syntax compared to other programming languages ({\burmesefont Python ၏ ရေးထုံးနှင့် အခြားသော Programming language များအား နှိုင်းယှဉ်ချက် })}
+% \subsection{Python Syntax compared to other programming languages ({\burmesefont Python ၏ ရေးထုံးနှင့် အခြားသော Programming language များအား နှိုင်းယှဉ်ချက် })}
 
-Python was designed for readability, and has some similarities to the English language with influence from mathematics. Python uses new lines to complete a command, as opposed to other programming languages which often use semicolons or parentheses. Python relies on indentation, using whitespace, to define scope; such as the scope of loops, functions and classes. Other programming languages often use curly-brackets for this purpose.
-\\\\
-\indent {\burmesefont Python ကို ဖတ်ရလွယ်ကူစေရန် ရည်ရွယ်ပြီး ဒီဇိုင်းထုတ်ထားသည်။ ၎င်းတွင် အင်္ဂလိပ်ဘာသာစကားနှင့် ဆင်တူသော လက္ခဏာရှိပြီး သင်္ချာဘာသာရပ်နှ၏ လွှမ်းမိုးမှုများ ပါဝင်နေသည်။ အမိန့်တစ်ခု (command) ပြီးဆုံးကြောင်း ပြသရန် စာလုံးများ (semicolons သို့မဟုတ် parentheses) ကို အသုံးပြုသော အခြား programming language များနှင့် မတူဘဲ Python ကမူ စာကြောင်းအသစ် (new lines) ကိုသာ အသုံးပြုသည်။ Python သည် အမိန့်တစ်ခုချင်းစီ၏ နယ်ပယ်အတိုင်းအတာ (scope) ကို သတ်မှတ်ရန် indentation (စာကြောင်းအစတွင် ချန်ထားသော နေရာလွတ်) ကို အသုံးပြုသည်။ ၎င်းသည် loops၊ functions နှင့် classes များ၏ နယ်ပယ်ကို ခွဲခြားရန် အသုံးပြုခြင်း ဖြစ်သည်။ အခြားသော Programming language များတွင်မူ အဆိုပာ ရည်ရွယ်ချက်အတွက် တွန့်ကွင်း (curly-brackets) များကို အသုံးပြုလေ့ရှိကြသည်။
-}
+% Python was designed for readability, and has some similarities to the English language with influence from mathematics. Python uses new lines to complete a command, as opposed to other programming languages which often use semicolons or parentheses. Python relies on indentation, using whitespace, to define scope; such as the scope of loops, functions and classes. Other programming languages often use curly-brackets for this purpose.
+% \\\\
+% \indent {\burmesefont Python ကို ဖတ်ရလွယ်ကူစေရန် ရည်ရွယ်ပြီး ဒီဇိုင်းထုတ်ထားသည်။ ၎င်းတွင် အင်္ဂလိပ်ဘာသာစကားနှင့် ဆင်တူသော လက္ခဏာရှိပြီး သင်္ချာဘာသာရပ်နှ၏ လွှမ်းမိုးမှုများ ပါဝင်နေသည်။ အမိန့်တစ်ခု (command) ပြီးဆုံးကြောင်း ပြသရန် စာလုံးများ (semicolons သို့မဟုတ် parentheses) ကို အသုံးပြုသော အခြား programming language များနှင့် မတူဘဲ Python ကမူ စာကြောင်းအသစ် (new lines) ကိုသာ အသုံးပြုသည်။ Python သည် အမိန့်တစ်ခုချင်းစီ၏ နယ်ပယ်အတိုင်းအတာ (scope) ကို သတ်မှတ်ရန် indentation (စာကြောင်းအစတွင် ချန်ထားသော နေရာလွတ်) ကို အသုံးပြုသည်။ ၎င်းသည် loops၊ functions နှင့် classes များ၏ နယ်ပယ်ကို ခွဲခြားရန် အသုံးပြုခြင်း ဖြစ်သည်။ အခြားသော Programming language များတွင်မူ အဆိုပာ ရည်ရွယ်ချက်အတွက် တွန့်ကွင်း (curly-brackets) များကို အသုံးပြုလေ့ရှိကြသည်။
+% }
 
-\subsection*{Quiz}
-\begin{itemize}
-    \item \textbf{If you are a native speaker of a language and you are interacting with that language, are you an interpreter or a compiler? Why?} ({\burmesefont အကယ်၍ သင်သည် မိခင်ဘာသာစကားတစ်ခုကို ကျွမ်းကျင်စွာ ပြောဆိုနိုင်သူဖြစ်ပြီး ထိုဘာသာစကားဖြင့်ပင် တစ်ဦးနှင့်တစ်ဦး အပြန်အလှန် ပြောဆိုဆက်သွယ်နေသည်ဆိုပါက၊ သင့်ကိုယ်သင် interpreter တစ်ယောက်ဟု ယူဆမည်လား သို့မဟုတ် compiler တစ်ယောက်ဟု ယူဆမည်လား? ဘာကြောင့်လဲ?})
+% \subsection*{Quiz}
+% \begin{itemize}
+%     \item \textbf{If you are a native speaker of a language and you are interacting with that language, are you an interpreter or a compiler? Why?} ({\burmesefont အကယ်၍ သင်သည် မိခင်ဘာသာစကားတစ်ခုကို ကျွမ်းကျင်စွာ ပြောဆိုနိုင်သူဖြစ်ပြီး ထိုဘာသာစကားဖြင့်ပင် တစ်ဦးနှင့်တစ်ဦး အပြန်အလှန် ပြောဆိုဆက်သွယ်နေသည်ဆိုပါက၊ သင့်ကိုယ်သင် interpreter တစ်ယောက်ဟု ယူဆမည်လား သို့မဟုတ် compiler တစ်ယောက်ဟု ယူဆမည်လား? ဘာကြောင့်လဲ?})
     
-\end{itemize}
+% \end{itemize}
 
-\subsection*{Homework}
-\begin{itemize}
-    \item \textbf{If you listen to a math lecture in total silence and later return home to write notes based on your understanding, would you consider yourself an interpreter or a compiler? Why?} ({\burmesefont အကယ်၍ သင်သည် သင်္ချာဘာသာရပ် သင်ကြားမှုကို အသံတိတ် အာရုံစိုက်နားထောင်ပြီးနောက်၊ အိမ်ပြန်ရောက်မှ သင်နားလည်သလို မှတ်စုများ ပြန်လည်ရေးသားမည်ဆိုပါက၊ သင့်ကိုယ်သင် interpreter တစ်ယောက်ဟု သတ်မှတ်မည်လား သို့မဟုတ် compiler တစ်ယောက်ဟု ယူဆမည်လား? ဘာကြောင့်လဲ?
-})
-\end{itemize}
+% \subsection*{Homework}
+% \begin{itemize}
+%     \item \textbf{If you listen to a math lecture in total silence and later return home to write notes based on your understanding, would you consider yourself an interpreter or a compiler? Why?} ({\burmesefont အကယ်၍ သင်သည် သင်္ချာဘာသာရပ် သင်ကြားမှုကို အသံတိတ် အာရုံစိုက်နားထောင်ပြီးနောက်၊ အိမ်ပြန်ရောက်မှ သင်နားလည်သလို မှတ်စုများ ပြန်လည်ရေးသားမည်ဆိုပါက၊ သင့်ကိုယ်သင် interpreter တစ်ယောက်ဟု သတ်မှတ်မည်လား သို့မဟုတ် compiler တစ်ယောက်ဟု ယူဆမည်လား? ဘာကြောင့်လဲ?
+% })
+% \end{itemize}
 
 \section{Basic Syntax \& Variables ({\burmesefont အခြေခံ ရေးထုံးများနှင့် ကိန်းရှင်များ})}
 \subsection{Executing Python Syntax ({\burmesefont Python ရေးထုံးများကို execute လုပ်ခြင်း})}
@@ -537,144 +537,144 @@ else:
 \end{lstlisting}
 \end{vscode}
 
-\section{Functions}
-\subsection{What is a function?}
-A function is a block of code that \textbf{only} runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result and helps to reduce code repetition by making the logic reusable.
+% \section{Functions}
+% \subsection{What is a function?}
+% A function is a block of code that \textbf{only} runs when it is called. You can pass data, known as parameters, into a function. A function can return data as a result and helps to reduce code repetition by making the logic reusable.
 
-\indent {\burmesefont Function ဆိုသည်မှာ ၎င်းအား ခေါ်ယူအသုံးပြုသည့်အခါမှသာ အလုပ်လုပ်သော ကုဒ်အစုအဝေး (block of code) တစ်ခု ဖြစ်ပါသည်။ Function တစ်ခုအတွင်းသို့ parameters ဟု ခေါ်ဆိုသည့် အချက်အလက်များကို ပေးပို့နိုင်ပါသည်။ Function တစ်ခုသည် ရလဒ်တစ်ခုကို ပြန်လည်ပေးပို့နိုင်သလို (return)၊ လုပ်ဆောင်ချက်များကို တစ်ခါတည်း ရေးသားထားနိုင်ခြင်းကြောင့် ကုဒ်များကို ထပ်ခါတလဲလဲ ရေးသားရခြင်းမှ လျှော့ချပေးပြီး ပြန်လည်အသုံးပြုနိုင်သော ယုတ္တိစနစ် (reusable logic) တစ်ခုဖြစ်အောင် ကူညီပေးပါသည်။}
+% \indent {\burmesefont Function ဆိုသည်မှာ ၎င်းအား ခေါ်ယူအသုံးပြုသည့်အခါမှသာ အလုပ်လုပ်သော ကုဒ်အစုအဝေး (block of code) တစ်ခု ဖြစ်ပါသည်။ Function တစ်ခုအတွင်းသို့ parameters ဟု ခေါ်ဆိုသည့် အချက်အလက်များကို ပေးပို့နိုင်ပါသည်။ Function တစ်ခုသည် ရလဒ်တစ်ခုကို ပြန်လည်ပေးပို့နိုင်သလို (return)၊ လုပ်ဆောင်ချက်များကို တစ်ခါတည်း ရေးသားထားနိုင်ခြင်းကြောင့် ကုဒ်များကို ထပ်ခါတလဲလဲ ရေးသားရခြင်းမှ လျှော့ချပေးပြီး ပြန်လည်အသုံးပြုနိုင်သော ယုတ္တိစနစ် (reusable logic) တစ်ခုဖြစ်အောင် ကူညီပေးပါသည်။}
 
-\begin{vscode}{main.py}
-\begin{lstlisting}[style=vscodeStyle]
-def my_function():
-    print("Hello from a function")
+% \begin{vscode}{main.py}
+% \begin{lstlisting}[style=vscodeStyle]
+% def my_function():
+%     print("Hello from a function")
 
-# Calling the function
-my_function()
-\end{lstlisting}
-\end{vscode}
+% # Calling the function
+% my_function()
+% \end{lstlisting}
+% \end{vscode}
 
-\begin{terminal}
-\texttt{\color{terminalFont} > Hello from a function }\\
-\end{terminal}
+% \begin{terminal}
+% \texttt{\color{terminalFont} > Hello from a function }\\
+% \end{terminal}
 
-\subsection{Parameters vs. Arguments}
+% \subsection{Parameters}
 
-\subsubsection*{Parameters}
-\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Definition of Parameter}]
-The variable used as a \textbf{placeholder} within the function definition is called a parameter. These are defined during function creation, and you can include as many parameters as needed.
+% \subsubsection*{Parameters}
+% \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Definition of Parameter}]
+% The variable used as a \textbf{placeholder} within the function definition is called a parameter. These are defined during function creation, and you can include as many parameters as needed.
 
-\indent {\burmesefont Function တစ်ခုကို စတင်တည်ဆောက်စဉ် (function definition) သတ်မှတ်လိုက်သော ကိန်းရှင် (variable) ကို parameter ဟု ခေါ်ဆိုပါသည်။ ၎င်းသည် တန်ဖိုးတစ်ခုအတွက် နေရာယူပေးထားသော placeholder တစ်ခုဖြစ်ပြီး၊ မိမိလိုအပ်သလောက် parameter အရေအတွက်ကို ထည့်သွင်းသတ်မှတ်နိုင်ပါသည်။}
-\end{tcolorbox}
+% \indent {\burmesefont Function တစ်ခုကို စတင်တည်ဆောက်စဉ် (function definition) သတ်မှတ်လိုက်သော ကိန်းရှင် (variable) ကို parameter ဟု ခေါ်ဆိုပါသည်။ ၎င်းသည် တန်ဖိုးတစ်ခုအတွက် နေရာယူပေးထားသော placeholder တစ်ခုဖြစ်ပြီး၊ မိမိလိုအပ်သလောက် parameter အရေအတွက်ကို ထည့်သွင်းသတ်မှတ်နိုင်ပါသည်။}
+% \end{tcolorbox}
 
-\subsubsection*{Arguments}
-\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Definition of Argument}]
-The \textbf{actual value} passed to the function when it is invoked is called an argument. You must ensure the number of arguments matches the number of parameters defined in the function to avoid a \texttt{TypeError}.
+% \subsubsection*{Arguments}
+% \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Definition of Argument}]
+% The \textbf{actual value} passed to the function when it is invoked is called an argument. You must ensure the number of arguments matches the number of parameters defined in the function to avoid a \texttt{TypeError}.
 
-\indent {\burmesefont Function တစ်ခုအား ခေါ်ယူအသုံးပြုသည့်အခါတွင် အမှန်တကယ် ထည့်သွင်းပေးလိုက်သော တန်ဖိုးကို argument ဟု ခေါ်ဆိုပါသည်။ \texttt{TypeError} မဖြစ်ပေါ်စေရန်အတွက် ထည့်သွင်းလိုက်သော argument အရေအတွက်သည် function တည်ဆောက်စဉ်က သတ်မှတ်ခဲ့သော parameter အရေအတွက်နှင့် ကိုက်ညီမှုရှိစေရန် သေချာစွာ ဂရုပြုရမည်ဖြစ်သည်။}
-\end{tcolorbox}
+% \indent {\burmesefont Function တစ်ခုအား ခေါ်ယူအသုံးပြုသည့်အခါတွင် အမှန်တကယ် ထည့်သွင်းပေးလိုက်သော တန်ဖိုးကို argument ဟု ခေါ်ဆိုပါသည်။ \texttt{TypeError} မဖြစ်ပေါ်စေရန်အတွက် ထည့်သွင်းလိုက်သော argument အရေအတွက်သည် function တည်ဆောက်စဉ်က သတ်မှတ်ခဲ့သော parameter အရေအတွက်နှင့် ကိုက်ညီမှုရှိစေရန် သေချာစွာ ဂရုပြုရမည်ဖြစ်သည်။}
+% \end{tcolorbox}
 
-\begin{vscode}{main.py}
-\begin{lstlisting}[style=vscodeStyle]
-# x and y are parameters
-def sum_values(x: int, y: int):
-    print(f"The sum of {x} and {y} is {x + y}")
+% \begin{vscode}{main.py}
+% \begin{lstlisting}[style=vscodeStyle]
+% # x and y are parameters
+% def sum_values(x: int, y: int):
+%     print(f"The sum of {x} and {y} is {x + y}")
 
-# 6 and 7 are separate arguments
-sum_values(6, 7)
-\end{lstlisting}
-\end{vscode}
+% # 6 and 7 are separate arguments
+% sum_values(6, 7)
+% \end{lstlisting}
+% \end{vscode}
 
-\begin{terminal}
-\texttt{\color{terminalFont} > The sum of 6 and 7 is 13 }\\
-\end{terminal}
+% \begin{terminal}
+% \texttt{\color{terminalFont} > The sum of 6 and 7 is 13 }\\
+% \end{terminal}
 
-\subsection{Return Statement}
+% \subsection{Return Statement}
 
-\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Definition of Return}]
-The \texttt{return} statement is a vital programming concept that allows a function to communicate data back to the rest of the program. It exits the function and sends a specific value to the caller. Once a \texttt{return} statement is executed, the function immediately stops, and any subsequent code within that function is ignored.
+% \begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black, title=\textbf{Definition of Return}]
+% The \texttt{return} statement is a vital programming concept that allows a function to communicate data back to the rest of the program. It exits the function and sends a specific value to the caller. Once a \texttt{return} statement is executed, the function immediately stops, and any subsequent code within that function is ignored.
 
-\indent {\burmesefont \texttt{return} statement ဆိုသည်မှာ function တစ်ခုမှ အချက်အလက်များကို ပရိုဂရမ်၏ အခြားအစိတ်အပိုင်းများထံ ပြန်လည်ပေးပို့နိုင်ရန် လုပ်ဆောင်ပေးသော အရေးကြီးသည့် programming အယူအဆတစ်ခု ဖြစ်ပါသည်။ ၎င်းသည် function အတွင်းမှ ထွက်ခွာပြီး သတ်မှတ်ထားသော တန်ဖိုးတစ်ခုကို ခေါ်ယူသူ (caller) ထံသို့ ပေးပို့လိုက်ပါသည်။ \texttt{return} statement တစ်ခုကို လုပ်ဆောင်ပြီးသည်နှင့် ထို function သည် ချက်ချင်းရပ်တန့်သွားမည်ဖြစ်ပြီး၊ function အတွင်းရှိ နောက်ဆက်တွဲ ကုဒ်များကို လုပ်ဆောင်ခြင်းမရှိဘဲ ကျော်သွားမည်ဖြစ်သည်။}
-\end{tcolorbox}
+% \indent {\burmesefont \texttt{return} statement ဆိုသည်မှာ function တစ်ခုမှ အချက်အလက်များကို ပရိုဂရမ်၏ အခြားအစိတ်အပိုင်းများထံ ပြန်လည်ပေးပို့နိုင်ရန် လုပ်ဆောင်ပေးသော အရေးကြီးသည့် programming အယူအဆတစ်ခု ဖြစ်ပါသည်။ ၎င်းသည် function အတွင်းမှ ထွက်ခွာပြီး သတ်မှတ်ထားသော တန်ဖိုးတစ်ခုကို ခေါ်ယူသူ (caller) ထံသို့ ပေးပို့လိုက်ပါသည်။ \texttt{return} statement တစ်ခုကို လုပ်ဆောင်ပြီးသည်နှင့် ထို function သည် ချက်ချင်းရပ်တန့်သွားမည်ဖြစ်ပြီး၊ function အတွင်းရှိ နောက်ဆက်တွဲ ကုဒ်များကို လုပ်ဆောင်ခြင်းမရှိဘဲ ကျော်သွားမည်ဖြစ်သည်။}
+% \end{tcolorbox}
 
-\begin{vscode}{main.py}
-\begin{lstlisting}[style=vscodeStyle]
-# x and y are parameters
-def sum_values(x: int, y: int):
-    return x + y  # Sends the result back to the caller
+% \begin{vscode}{main.py}
+% \begin{lstlisting}[style=vscodeStyle]
+% # x and y are parameters
+% def sum_values(x: int, y: int):
+%     return x + y  # Sends the result back to the caller
 
-first_val = 6
-second_val = 7
+% first_val = 6
+% second_val = 7
 
-# The function call is replaced by its returned value
-total = sum_values(first_val, second_val)
+% # The function call is replaced by its returned value
+% total = sum_values(first_val, second_val)
 
-print(f"The sum of {first_val} and {second_val} is {total}")
-\end{lstlisting}
-\end{vscode}
+% print(f"The sum of {first_val} and {second_val} is {total}")
+% \end{lstlisting}
+% \end{vscode}
 
-\begin{terminal}
-\texttt{\color{terminalFont} > The sum of 6 and 7 is 13 }\\
-\end{terminal}
+% \begin{terminal}
+% \texttt{\color{terminalFont} > The sum of 6 and 7 is 13 }\\
+% \end{terminal}
 
-\subsection*{Quiz}
-Find the output results  of the following problem.
-\begin{vscode}{quiz.py}
-\begin{lstlisting}[style=vscodeStyle]
-def sum_values(x: int, y: int):
-    return x + y
+% \subsection*{Quiz}
+% Find the output results  of the following problem.
+% \begin{vscode}{quiz.py}
+% \begin{lstlisting}[style=vscodeStyle]
+% def sum_values(x: int, y: int):
+%     return x + y
 
-def diff_values(x: int, y: int):
-    return x - y
+% def diff_values(x: int, y: int):
+%     return x - y
 
-def error():
-    print("The conditions were not satisfied.")
+% def error():
+%     print("The conditions were not satisfied.")
     
-first_val = 10
-second_val = 5
-result = None
+% first_val = 10
+% second_val = 5
+% result = None
 
-if first_val > second_val:
-    result = diff_values(first_val, second_val)
-    print(f"The difference is {result}.")
-elif first_val < second_val:
-    result = sum_values(first_val, second_val)
-    print(f"The sum is {result}.")
-else:
-    error()
-\end{lstlisting}
-\end{vscode}
+% if first_val > second_val:
+%     result = diff_values(first_val, second_val)
+%     print(f"The difference is {result}.")
+% elif first_val < second_val:
+%     result = sum_values(first_val, second_val)
+%     print(f"The sum is {result}.")
+% else:
+%     error()
+% \end{lstlisting}
+% \end{vscode}
 
-\subsection*{Homework}
-Find the output results  of the following problem.
-\begin{vscode}{homework.py}
-\begin{lstlisting}[style=vscodeStyle]
-first_val = 12
-second_val = 5
-func_return = None
-result = None
+% \subsection*{Homework}
+% Find the output results  of the following problem.
+% \begin{vscode}{homework.py}
+% \begin{lstlisting}[style=vscodeStyle]
+% first_val = 12
+% second_val = 5
+% func_return = None
+% result = None
 
-def first_func(x :int, y: int):
-    func_return = modulus(x, y)
-    return 0 if func_return == 0 else second_func(x, y)
+% def first_func(x :int, y: int):
+%     func_return = modulus(x, y)
+%     return 0 if func_return == 0 else second_func(x, y)
 
-def second_func(x: int, y: int):
-    func_return = x / y
-    return func_return
+% def second_func(x: int, y: int):
+%     func_return = x / y
+%     return func_return
 
-def modulus(x: int, y: int):
-    return x % y
+% def modulus(x: int, y: int):
+%     return x % y
 
-def error():
-    return "The conditions were not satisfied."
+% def error():
+%     return "The conditions were not satisfied."
 
-def main():
-    result = first_func(first_val, second_val) \
-            if first_val > second_val else error()
-    print(f"The output: {result}")
+% def main():
+%     result = first_func(first_val, second_val) \
+%             if first_val > second_val else error()
+%     print(f"The output: {result}")
     
-main()
-\end{lstlisting}
-\end{vscode}
+% main()
+% \end{lstlisting}
+% \end{vscode}
 
 \renewcommand{\bibname}{References}
 \begin{thebibliography}{9}

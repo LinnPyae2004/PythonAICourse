@@ -29,7 +29,6 @@ Desktop.ini
 *.cache
 
 # YOLO training runs/logs
-runs/
 datasets/
 
 # latex configs

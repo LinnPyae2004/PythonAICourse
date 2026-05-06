@@ -10,6 +10,7 @@ path = os.path.join(current_dir, 'data', 'HandGesture', 'runs', 'detect', model_
 
 model = YOLO(path)
 cap = cv2.VideoCapture(0)
+conf_threshold = 0.5 # lower this value if the camera is not detecting
 
 print("Searching for your hand... Press 'q' to quit.")
 
@@ -20,7 +21,7 @@ while cap.isOpened():
 
     frame = cv2.flip(frame, 1)
 
-    results = model(frame, conf=0.7)
+    results = model(frame, conf=0.5)
 
     for r in results:
         boxes = r.boxes

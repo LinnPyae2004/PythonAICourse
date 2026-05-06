@@ -1,4 +1,4 @@
-path: C:/Users/mglin/PythonAICourse/ComputerVision/data/HandGesture  # The parent folder
+path: ./data/HandGesture  # The parent folder
 
 train: train/images       # Path to training images
 val: valid/images         # Path to validation images
@@ -7,7 +7,7 @@ test: test/images         # Path to test images
 # Classes
 nc: 4                    # Number of classes 
 names:
-  0: closed_palm
-  1: open_palm
+  0: open_palm
+  1: closed_palm
   2: thumb_up
-  3: pray
+  3: thumb_down

@@ -8,16 +8,20 @@
 
 namespace fs = std::filesystem;
 
+void cleanData(const std::string &directoryPath);
+
 int main()
 {
     // change these based on the folder you want to save
-    std::string outputFolder = "Test";
+    std::string outputFolder = "Open_Palm";
     std::string outputDir = "data/HandGesture/raw_staging/" + outputFolder;
 
     if (!fs::exists(outputDir))
     {
         fs::create_directories(outputDir);
     }
+
+    cleanData(outputDir);
 
     // camera setup
     cv::VideoCapture cap(0);
@@ -81,4 +85,28 @@ int main()
     std::cout << "\nDone! Saved " << savedCount << " images to " << outputDir << std::endl;
 
     return 0;
+}
+
+// clean old image files
+void cleanData(const std::string &directoryPath)
+{
+    std::cout << "Cleaning old image files in: " << directoryPath << std::endl;
+
+    try
+    {
+        if (fs::exists(directoryPath) && fs::is_directory(directoryPath))
+        {
+            for (const auto &entry : fs::directory_iterator(directoryPath))
+            {
+                if (fs::is_regular_file(entry.path()))
+                {
+                    fs::remove(entry.path());
+                }
+            }
+        }
+    }
+    catch (const fs::filesystem_error &e)
+    {
+        std::cerr << "Error during cleanup: " << e.what() << std::endl;
+    }
 }

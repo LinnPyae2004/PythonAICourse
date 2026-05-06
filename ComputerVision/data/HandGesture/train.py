@@ -15,7 +15,7 @@ def train_my_model():
         epochs=50,
         imgsz=640,
         device=0,
-        name='hand_gesture_v1',
+        name='hand_gesture_v1', # change the version name here
         workers=2
     )
 

@@ -1,8 +1,9 @@
 import cv2
 import os
 import time
+import glob
 
-OUTPUT_FOLDER = "Pray" # change the name as you need 
+OUTPUT_FOLDER = "Open_Palm" # change the folder name as you need 
 OUTPUT_DIR = f"data/HandGesture/raw_staging/{OUTPUT_FOLDER}"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 FRAME_INTERNAL = 10
@@ -10,6 +11,18 @@ FRAME_INTERNAL = 10
 cap = cv2.VideoCapture(0)
 count = 0
 saved_count = 0
+
+# clean old images everytime you run this code
+def clean_data():
+    print(f"Cleaning old image files in {OUTPUT_DIR}...")
+    files = glob.glob(os.path.join(OUTPUT_DIR, "*.jpg"))
+    for img_file in files:
+        try:
+            os.remove(img_file)
+        except Exception as e:
+            print(f"Error: {e}")
+
+clean_data()
 
 print("Starting capture, move your hand around! Press 'q' to stop.")
 

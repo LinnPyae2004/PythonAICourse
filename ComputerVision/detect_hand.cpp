@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 
+const std::string model_ver = "hand_gesture_v1"; // edit the model version name here
 struct Detection
 {
     int class_id;
@@ -16,7 +17,7 @@ struct Detection
 
 int main() {
     // load the model (.onnx file)
-    std::string modelPath = "data/HandGesture/runs/detect/hand_gesture_v1/weights/best.onnx";
+    std::string modelPath = "data/HandGesture/runs/detect/" + model_ver + "/weights/best.onnx";
     cv::dnn::Net net = cv::dnn::readNetFromONNX(modelPath);
 
     if (cv::cuda::getCudaEnabledDeviceCount() > 0) {
@@ -73,7 +74,7 @@ int main() {
             cv::minMaxLoc(scores, 0, &score, 0, &class_id_point);
 
             if (score > 0.7)
-            { // Your conf=0.7 threshold
+            {
                 float cx = row.at<float>(0);
                 float cy = row.at<float>(1);
                 float w = row.at<float>(2);
@@ -106,23 +107,23 @@ int main() {
             std::string label;
             if (cls == 0)
             {
-                label = "Closed";
-                color = cv::Scalar(0, 0, 255);
+                label = "Open";
+                color = cv::Scalar(0, 0, 255); //red 
             }
             else if (cls == 1)
             {
-                label = "Open";
-                color = cv::Scalar(0, 255, 0);
+                label = "Close";
+                color = cv::Scalar(0, 255, 0); // green
             }
             else if (cls == 2)
             {
                 label = "Thumb Up";
-                color = cv::Scalar(255, 0, 127);
+                color = cv::Scalar(255, 0, 0); // blue
             }
             else if (cls == 3)
             {
-                label = "Pray";
-                color = cv::Scalar(139, 0, 0);
+                label = "Thumb Down";
+                color = cv::Scalar(255, 0, 255); // purple
             }
 
             // Drawing logic

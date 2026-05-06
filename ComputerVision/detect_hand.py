@@ -4,8 +4,9 @@ from ultralytics import YOLO
 
 # load the trained model
 current_dir = os.path.dirname(os.path.abspath(__file__))
+model_ver = 'hand_gesture_v1' # edit the model version name here
 
-path = os.path.join(current_dir, 'data', 'HandGesture', 'runs', 'detect', 'hand_gesture_v1', 'weights', 'best.pt')
+path = os.path.join(current_dir, 'data', 'HandGesture', 'runs', 'detect', model_ver, 'weights', 'best.pt')
 
 model = YOLO(path)
 cap = cv2.VideoCapture(0)
@@ -31,18 +32,19 @@ while cap.isOpened():
             # Get the coordinates of the bounding box
             x1, y1, x2, y2 = map(int, box.xyxy[0])
 
+            # detection for each trained class
             if cls == 0:
-                label = f"Closed {conf:.2f}"
-                color = (0, 0, 255)  # red 
+                label = f"Open {conf:.2f}"
+                color = (0, 0, 255)  # red
             elif cls == 1:
-                label = f"Open: {conf:.2f}"
+                label = f"Closed {conf:.2f}"
                 color = (0, 255, 0) # green
             elif cls == 2:
-                label = f"Thumb Up : {conf:.2f}"
-                color = (127, 0, 255) # violet
+                label = f"Thumb Up {conf:.2f}"
+                color = (255, 0, 0) # blue
             elif cls == 3:
-                label = f"Pray : {conf:.2f}"
-                color = (0, 0, 139) # dark blue
+                label = f"Thumb Down {conf:.2f}"
+                color = (255, 0, 255) # purple
 
             # calculate center and radius
             center_x, center_y = int((x1 + x2) / 2), int((y1 + y2) / 2)

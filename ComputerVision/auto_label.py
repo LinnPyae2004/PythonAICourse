@@ -3,17 +3,17 @@ import mediapipe as mp
 import os
 import glob
 
-RAW_TARGET_DIR = f"Test" # put your messy photo data here  
+RAW_TARGET_DIR = f"Open_Palm" # insert your messy photo data folder name here  
 RAW_INPUT_DIR = f"data/HandGesture/raw_staging/{RAW_TARGET_DIR}"
 
-TARGET_DATA = "train"
+TARGET_DATA = "train" # edit the name of the folder you want to save here
 TARGET_DIR = f"data/HandGesture/{TARGET_DATA}"
 IMAGE_FOLDER = f"{TARGET_DIR}/images"
 LABEL_FOLDER = f"{TARGET_DIR}/labels"
 
 # change these for each new gesture
-PREFIX = "test"
-CLASS_ID = 4
+PREFIX = RAW_TARGET_DIR
+CLASS_ID = 3
 
 # only cleans the gesture you are currently processing
 def clean_specific_gesture(prefix):

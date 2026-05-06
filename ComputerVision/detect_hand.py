@@ -21,7 +21,7 @@ while cap.isOpened():
 
     frame = cv2.flip(frame, 1)
 
-    results = model(frame, conf=0.5)
+    results = model(frame, conf=conf_threshold)
 
     for r in results:
         boxes = r.boxes
